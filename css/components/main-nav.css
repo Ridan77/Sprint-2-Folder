@@ -1,6 +1,6 @@
 .main-nav {
   display: flex;
-    background-color: green;
+
   justify-content: space-between;
   align-items: center;
 }
