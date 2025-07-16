@@ -2,10 +2,18 @@
 
 
 html{
-    /* background-color: var(--clr-primary--1); */
+    background-color: var(--clr-primary--1);
+    color: var(--clr-primary-header-bg)
 }
 
+a ,button{
+      color: var(--clr-primary-header-bg);
+      transition: .4s;
+}
 
+a:hover, button:hover{
+    color : var(--clr-primary--2)
+}
 /* HELPERS*/
 
 .clean-list {

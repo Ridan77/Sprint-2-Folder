@@ -12,29 +12,55 @@
     <header class="main-nav">
         <h2>Meme Generator</h2>
         <ul class="list clean-list">
-            <li><a class="active" href="#">Gallery</a></li>
-            <li><a href="#">Memes</a></li>
+            <li><a class="active" onclick="onGallryClicked()" href="#">Gallery</a></li>
+            <li><a href="#" onclick="onEditorClicked()">Memes</a></li>
             <li><a href="#">About</a></li>
         </ul>
+     
     </header>
-    <main class="gallery" hidden >Gallery  </main>
-    <main class="editor"  >
+    <main class="gallery-container">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <a onclick="onChoosePic('/img/1.jpg')"> <img src="/img/1.jpg"></a>
+            <a onclick="onChoosePic('/img/2.jpg')"> <img src="/img/2.jpg"></a>
+            <a onclick="onChoosePic('/img/3.jpg')"> <img src="/img/3.jpg"></a>
+            <a onclick="onChoosePic('/img/4.jpg')"> <img src="/img/4.jpg"></a>
+            <a onclick="onChoosePic('/img/5.jpg')"> <img src="/img/5.jpg"></a>
+        
+        </div>
+
+    </main>
+    <main class="editor hide">Meme
         <section class="canvas-containter">
-            	<canvas class="canvas" width="300" height="300"></canvas>
+            <canvas class="canvas" width="300" height="300"></canvas>
         </section>
         <section class="panel-container">
-            <input type="text" name="text-line" class="input-text" placeholder="txt" id="" oninput="onChangeTextLine(event.target.value)">
-            <button class="prev-line" onclick="onMoveLine(-1)">⬆️</button>
-            <button class="next-line" onclick="onMoveLine(+1)">⬇️</button>
-            <button class="switch-line" onclick="onSwitchLine(1)">Switch</button>
-            <button class="add-line" onclick="onAddLine()">Add</button>
-            <button class="delete-line" onclick="onDeletehLine()">Delete</button>
-            <button class="delete-line" onclick="onDownloadImg()">Download</button>
+
+            <input type="text" name="text-line" class="input-text" placeholder="Line goes in here..." id=""
+                oninput="onChangeTextLine(event.target.value)">
+
+
+            <button class="up-line line-controler" onclick="onMoveLine(-1)">⬆️</button>
+            <button class="down-line line-controler" onclick="onMoveLine(+1)">⬇️</button>
+            <button class="switch-line line-controler" onclick="onSwitchLine(1)">Switch</button>
+            <button class="add-line line-controler  " onclick="onAddLine()">Add</button>
+            <button class="delete-line line-controler" onclick="onDeletehLine()">Delete</button>
+
+            <button class="text-controler increase-font" onclick="onChangeFontSize(+1)">F+</button>
+            <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)">F-</button>
+            <input type="color" value="#000000" id="color-picker" class="color-picker"
+                onchange="onSetColor(event.target.value)" />
+
+            <button>
+
+                <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="image.jpg">Download</a>
+            </button>
         </section>
     </main>
-
+    <script src="https://kit.fontawesome.com/f321ebd625.js" crossorigin="anonymous"></script>
     <script src="/js/services/storage.service.js"></script>
     <script src="/js/services/meme-services.js"></script>
     <script src="/js/meme-controller.js"></script>
 </body>
+
 </html>

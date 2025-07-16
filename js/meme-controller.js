@@ -11,14 +11,32 @@ function onInit() {
     gCtx.strokeStyle = 'white'
     gCtx.textBaseline = 'top'
     gCtx.lineWidth = lineWidth
-    renderMeme('')
     // resizeCanvas()
     // window.addEventListener('resize', resizeCanvas)
 }
 
+function onGallryClicked() {
+    console.log('gallery')
+    document.querySelector('.gallery-container').classList.remove('hide')
+    document.querySelector('.editor').classList.add('hide')
+}
+
+function onEditorClicked() {
+    console.log('editor')
+    document.querySelector('.gallery-container').classList.add('hide')
+    document.querySelector('.editor').classList.remove('hide')
+}
+
+function onChoosePic(src){
+    console.log(src)
+    document.querySelector('.gallery-container').classList.add('hide')
+    document.querySelector('.editor').classList.remove('hide')
+    renderMeme(src)
+}
+
 function renderMeme(val) {
     const elImg = new Image()
-    elImg.src = '/img/1.jpg'
+    elImg.src = val
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderLines()
@@ -39,18 +57,18 @@ function renderText(text, x, y, color, size) {
     gCtx.fillStyle = color
     gCtx.font = `${size}px Arial`
     gCtx.fillText(text, x, y)
-    renderBorder()
+    renderBorder(size)
 
 }
 
-function renderBorder() {
+function renderBorder(size) {
     const idx = getSelectedLineIdx()
     const text = getLines()[idx].txt
     // if (!text) return
     const textMetric = gCtx.measureText(text)
     const length = (text) ? (textMetric.width + 10) : 100
     const { x, y } = getLinePosition(idx)
-    gCtx.strokeRect(x - (4), y - 4, length, 25)
+    gCtx.strokeRect(x - 5, y - 5, length, size + 5)
 }
 
 
@@ -78,8 +96,24 @@ function onMoveLine(dir) {
     renderMeme()
 }
 
-
 function onAddLine() {
     setSelectedLineIdx(addLine())
+    document.querySelector('.input-text').value = ''
+    renderMeme()
+}
+
+function onDeletehLine() {
+    setSelectedLineIdx(deleteLine())
+    renderMeme()
+}
+
+
+function onDownloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+
+function onChangeFontSize(diff) {
+    changeFontSize(diff)
     renderMeme()
 }

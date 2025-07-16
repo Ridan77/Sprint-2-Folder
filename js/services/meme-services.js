@@ -1,6 +1,7 @@
 'use strict'
 
 const MOVE_STEP = 10
+const FONT_STEP = 2
 
 var gMeme = {
 
@@ -10,13 +11,13 @@ var gMeme = {
         {
             txt: '',
             size: 20,
-            color: 'red',
+            color: 'yellow',
             pos: { x: 50, y: 50 }
         },
         {
             txt: '',
             size: 20,
-            color: 'yellow',
+            color: 'green',
             pos: { x: 50, y: 250 }
         }
     ]
@@ -54,18 +55,28 @@ function moveLine(dir) {
     gMeme.lines[idx].pos.y += MOVE_STEP * dir
 }
 
-function addLine(){
+function addLine() {
     gMeme.lines.push(_creatLine())
     console.log(gMeme.lines)
-    return gMeme.lines.length-1
+    return gMeme.lines.length - 1
 }
 
-function _creatLine(){
-    return     {
-            txt: '',
-            size: 20,
-            color: 'white',
-            pos: { x: gElCanvas.width/2-50, y: gElCanvas.height/2 }
-        }
+function deleteLine() {
+    const idx = getSelectedLineIdx()
+    gMeme.lines.splice(idx, 1)
+    return idx - 1
+}
+function _creatLine() {
+    return {
+        txt: '',
+        size: 20,
+        color: 'white',
+        pos: { x: gElCanvas.width / 2 - 50, y: gElCanvas.height / 2 }
+    }
+}
 
+function changeFontSize(diff) {
+    console
+    const idx = getSelectedLineIdx()
+    gMeme.lines[idx].size += diff * FONT_STEP
 }
