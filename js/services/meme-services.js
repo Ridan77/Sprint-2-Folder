@@ -12,33 +12,37 @@ var gMeme = {
             size: 20,
             color: 'red'
         },
-        {txt:''}
+        {
+            txt: '',
+            size: 20,
+            color: 'yellow',
+        }
     ]
-} 
+}
 
 
-function getLines(){
+function getLines() {
     return gMeme.lines
 }
 
-function setLine(val){
+function setLine(val) {
     const currLine = gMeme.selectedLineIdx
-    gMeme.lines[currLine].txt=val
+    gMeme.lines[currLine].txt = val
 }
 
 
-function getSelectedLineIdx(){
+function getSelectedLineIdx() {
     return gMeme.selectedLineIdx
 }
 
-function setSelectedLineIdx(idx){
-     gMeme.selectedLineIdx=idx
+function setSelectedLineIdx(idx) {
+    gMeme.selectedLineIdx = idx
 }
 
-function getLinePosition(idx){
+function getLinePosition(idx) {
     return gLinePositions[idx]
 }
 
-function getTotalLine(){
+function getTotalLine() {
     return gMeme.lines.length
 }

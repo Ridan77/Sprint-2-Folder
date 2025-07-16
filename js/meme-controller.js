@@ -30,12 +30,13 @@ function renderLines() {
     const selectedLineIsx = getSelectedLineIdx()
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
-        renderText(item.txt, x, y)
+        renderText(item.txt, x, y,item.color,item.size)
     })
 }
 
-function renderText(text, x, y) {
-    console.log(x, y, text)
+function renderText(text, x, y, color,size) {
+    gCtx.fillStyle = color
+    gCtx.font = `${size}px Arial`
     gCtx.fillText(text, x, y)
     renderBorder()
 
@@ -47,9 +48,7 @@ function renderBorder() {
     if (!text) return
     const { x, y } = getLinePosition(idx)
     const textMetric = gCtx.measureText(text)
-    gCtx.fillStyle = 'yellow'
-    gCtx.font = '20px Arial'
-    gCtx.strokeRect(x - (4), y - 4, textMetric.width+10, 25)
+    gCtx.strokeRect(x - (4), y - 4, textMetric.width + 10, 25)
 }
 
 
@@ -68,8 +67,5 @@ function onSwitchLine() {
     const elInput = document.querySelector('.input-text')
     const newLineTxt = getLines()[currLineInx].txt
     elInput.value = newLineTxt
-    console.log(currLineInx)
-    renderLines()
-
-
+    renderMeme()
 }
