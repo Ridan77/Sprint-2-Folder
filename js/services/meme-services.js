@@ -6,6 +6,8 @@ const FONT_STEP = 2
 var gMeme = {
 
     selectedImgId: 1,
+    selectedImgSrc: '',
+
     selectedLineIdx: 0,
     lines: [
         {
@@ -76,7 +78,19 @@ function _creatLine() {
 }
 
 function changeFontSize(diff) {
-    console
     const idx = getSelectedLineIdx()
     gMeme.lines[idx].size += diff * FONT_STEP
+}
+
+function setImageSelected(src) {
+    gMeme.selectedImgSrc = src
+}
+
+function setLineColor(val) {
+    const idx = getSelectedLineIdx()
+    gMeme.lines[idx].color = val
+}
+
+function getPictureSelected(){
+    return gMeme.selectedImgSrc
 }

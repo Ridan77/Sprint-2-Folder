@@ -27,16 +27,18 @@ function onEditorClicked() {
     document.querySelector('.editor').classList.remove('hide')
 }
 
-function onChoosePic(src){
+function onChoosePic(src) {
     console.log(src)
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
+    setImageSelected(src)
     renderMeme(src)
 }
 
-function renderMeme(val) {
+function renderMeme() {
+    const src = getPictureSelected()
     const elImg = new Image()
-    elImg.src = val
+    elImg.src = src
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderLines()
@@ -116,4 +118,8 @@ function onDownloadImg(elLink) {
 function onChangeFontSize(diff) {
     changeFontSize(diff)
     renderMeme()
+}
+
+function onSetColor(val){
+    setLineColor(val)
 }
