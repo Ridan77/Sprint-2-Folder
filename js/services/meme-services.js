@@ -1,5 +1,6 @@
 'use strict'
 
+const gLinePositions = [{ x: 50, y: 50 }, { x: 50, y: 250 }]
 
 var gMeme = {
 
@@ -7,10 +8,11 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: '',
             size: 20,
             color: 'red'
-        }
+        },
+        {txt:''}
     ]
 } 
 
@@ -21,6 +23,22 @@ function getLines(){
 
 function setLine(val){
     const currLine = gMeme.selectedLineIdx
-    gMeme.lines[currLine]=val
-    console.log('update gmeme')
+    gMeme.lines[currLine].txt=val
+}
+
+
+function getSelectedLineIdx(){
+    return gMeme.selectedLineIdx
+}
+
+function setSelectedLineIdx(idx){
+     gMeme.selectedLineIdx=idx
+}
+
+function getLinePosition(idx){
+    return gLinePositions[idx]
+}
+
+function getTotalLine(){
+    return gMeme.lines.length
 }
