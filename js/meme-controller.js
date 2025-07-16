@@ -47,28 +47,25 @@ function renderMeme() {
 
 function renderLines() {
     const lines = getLines()
-    const selectedLineIsx = getSelectedLineIdx()
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
         // console.log(x,y,item.txt,item.color,item.size)
-        renderText(item.txt, x, y, item.color, item.size)
+        renderText(item.txt, x, y, item.color, item.size, idx)
     })
 }
 
-function renderText(text, x, y, color, size) {
+function renderText(text, x, y, color, size, idx) {
     gCtx.fillStyle = color
     gCtx.font = `${size}px Arial`
     gCtx.fillText(text, x, y)
-    renderBorder(size)
-
+    if (idx === getSelectedLineIdx()) renderBorder(size)
 }
 
 function renderBorder(size) {
     const idx = getSelectedLineIdx()
     const text = getLines()[idx].txt
-    // if (!text) return
     const textMetric = gCtx.measureText(text)
-    const length = (text) ? (textMetric.width + 10) : 100
+    const length = (text) ? (textMetric.width + 10) : 200
     const { x, y } = getLinePosition(idx)
     gCtx.strokeRect(x - 5, y - 5, length, size + 5)
 }
@@ -120,6 +117,6 @@ function onChangeFontSize(diff) {
     renderMeme()
 }
 
-function onSetColor(val){
+function onSetColor(val) {
     setLineColor(val)
 }

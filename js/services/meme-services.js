@@ -1,7 +1,7 @@
 'use strict'
 
 const MOVE_STEP = 10
-const FONT_STEP = 2
+const FONT_STEP = 4
 
 var gMeme = {
 
