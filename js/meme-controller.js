@@ -120,3 +120,17 @@ function onChangeFontSize(diff) {
 function onSetColor(val) {
     setLineColor(val)
 }
+
+function onCanvasClick(ev) {
+    const { offsetX, offsetY, clientX, clientY } = ev
+    const lineClickedIdx = findLineClicked(offsetX, offsetY)
+    if (lineClickedIdx !== -1) {
+        setSelectedLineIdx(lineClickedIdx)
+        const elInput = document.querySelector('.input-text')
+        const newLineTxt = getLines()[getSelectedLineIdx()].txt
+        elInput.value = newLineTxt
+        renderMeme()
+    }
+}
+
+

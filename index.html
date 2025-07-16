@@ -32,7 +32,7 @@
     </main>
     <main class="editor hide">Meme
         <section class="canvas-containter">
-            <canvas class="canvas" width="300" height="300"></canvas>
+            <canvas class="canvas" width="300" height="300" onclick="onCanvasClick(event)"></canvas>
         </section>
         <section class="panel-container">
 
@@ -48,8 +48,11 @@
 
             <button class="text-controler increase-font" onclick="onChangeFontSize(+1)">F+</button>
             <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)">F-</button>
-            <input type="color" value="#000000" id="color-picker" class="color-picker"
-                onchange="onSetColor(event.target.value)" />
+           
+            <input type="color" value="#000000" id="color-picker" class="color-picker" onchange="onSetColor(event.target.value)" />
+
+			<!-- <input type="color" value="#000000" id="color-picker" class="color-picker" onchange="onSetBrush('color',event.target.value)" /> -->
+
 
             <button>
 

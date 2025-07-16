@@ -91,6 +91,22 @@ function setLineColor(val) {
     gMeme.lines[idx].color = val
 }
 
-function getPictureSelected(){
+function getPictureSelected() {
     return gMeme.selectedImgSrc
 }
+
+
+function findLineClicked(clickedx, clickedy) {
+    const clickedLineIdx = gMeme.lines.findIndex((line, idx) => {
+        const { x: x1, y: y1 } = getLinePosition(idx)
+        const text = getLines()[idx].txt
+        const length = (text) ? (gCtx.measureText(text).width) : 200
+        const x2 = x1 + length
+        const y2 = getLines()[idx].size + y1
+        const withInXAxis = (clickedx >= x1 && clickedx<=x2)
+        const withInYAxis = (clickedy >= y1 && clickedy<=y2)
+        return (withInXAxis&&withInYAxis)
+    })
+    return clickedLineIdx
+}
+
