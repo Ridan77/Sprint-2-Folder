@@ -9,7 +9,7 @@
 
 /* BASICS */
 
-@import url(/css/base.css);
+@import url(/.base.css);
 
 /* COMPONENTS */
 @import url(./header.css);
