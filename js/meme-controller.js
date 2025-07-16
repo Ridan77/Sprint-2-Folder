@@ -30,11 +30,12 @@ function renderLines() {
     const selectedLineIsx = getSelectedLineIdx()
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
-        renderText(item.txt, x, y,item.color,item.size)
+        // console.log(x,y,item.txt,item.color,item.size)
+        renderText(item.txt, x, y, item.color, item.size)
     })
 }
 
-function renderText(text, x, y, color,size) {
+function renderText(text, x, y, color, size) {
     gCtx.fillStyle = color
     gCtx.font = `${size}px Arial`
     gCtx.fillText(text, x, y)
@@ -45,10 +46,11 @@ function renderText(text, x, y, color,size) {
 function renderBorder() {
     const idx = getSelectedLineIdx()
     const text = getLines()[idx].txt
-    if (!text) return
-    const { x, y } = getLinePosition(idx)
+    // if (!text) return
     const textMetric = gCtx.measureText(text)
-    gCtx.strokeRect(x - (4), y - 4, textMetric.width + 10, 25)
+    const length = (text) ? (textMetric.width + 10) : 100
+    const { x, y } = getLinePosition(idx)
+    gCtx.strokeRect(x - (4), y - 4, length, 25)
 }
 
 
@@ -59,13 +61,25 @@ function onChangeTextLine(val) {
 
 }
 
-function onSwitchLine() {
+function onSwitchLine(diff) {
     var currLineInx = getSelectedLineIdx()
-    currLineInx++
+    currLineInx += diff
+    if (currLineInx === -1) currLineInx = getTotalLine() - 1
     if (currLineInx === getTotalLine()) currLineInx = 0
     setSelectedLineIdx(currLineInx)
     const elInput = document.querySelector('.input-text')
     const newLineTxt = getLines()[currLineInx].txt
     elInput.value = newLineTxt
+    renderMeme()
+}
+
+function onMoveLine(dir) {
+    moveLine(dir)
+    renderMeme()
+}
+
+
+function onAddLine() {
+    setSelectedLineIdx(addLine())
     renderMeme()
 }

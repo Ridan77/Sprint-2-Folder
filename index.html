@@ -24,9 +24,12 @@
         </section>
         <section class="panel-container">
             <input type="text" name="text-line" class="input-text" placeholder="txt" id="" oninput="onChangeTextLine(event.target.value)">
-            <button class="switch-line" onclick="onSwitchLine()">Switch</button>
+            <button class="prev-line" onclick="onMoveLine(-1)">⬆️</button>
+            <button class="next-line" onclick="onMoveLine(+1)">⬇️</button>
+            <button class="switch-line" onclick="onSwitchLine(1)">Switch</button>
             <button class="add-line" onclick="onAddLine()">Add</button>
             <button class="delete-line" onclick="onDeletehLine()">Delete</button>
+            <button class="delete-line" onclick="onDownloadImg()">Download</button>
         </section>
     </main>
 

@@ -1,6 +1,6 @@
 'use strict'
 
-const gLinePositions = [{ x: 50, y: 50 }, { x: 50, y: 250 }]
+const MOVE_STEP = 10
 
 var gMeme = {
 
@@ -10,12 +10,14 @@ var gMeme = {
         {
             txt: '',
             size: 20,
-            color: 'red'
+            color: 'red',
+            pos: { x: 50, y: 50 }
         },
         {
             txt: '',
             size: 20,
             color: 'yellow',
+            pos: { x: 50, y: 250 }
         }
     ]
 }
@@ -40,9 +42,30 @@ function setSelectedLineIdx(idx) {
 }
 
 function getLinePosition(idx) {
-    return gLinePositions[idx]
+    return gMeme.lines[idx].pos
 }
 
 function getTotalLine() {
     return gMeme.lines.length
+}
+
+function moveLine(dir) {
+    const idx = getSelectedLineIdx()
+    gMeme.lines[idx].pos.y += MOVE_STEP * dir
+}
+
+function addLine(){
+    gMeme.lines.push(_creatLine())
+    console.log(gMeme.lines)
+    return gMeme.lines.length-1
+}
+
+function _creatLine(){
+    return     {
+            txt: '',
+            size: 20,
+            color: 'white',
+            pos: { x: gElCanvas.width/2-50, y: gElCanvas.height/2 }
+        }
+
 }
