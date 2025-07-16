@@ -17,12 +17,21 @@
             <li><a href="#">About</a></li>
         </ul>
     </header>
-    <main class="gallery"  >Gallery  </main>
-    <main class="editor"  >Editor </main>
+    <main class="gallery" hidden >Gallery  </main>
+    <main class="editor"  >
+        <section class="canvas-containter">
+            	<canvas class="canvas" width="300" height="300"></canvas>
+        </section>
+        <section class="panel-container">
+            <input type="text" name="text-line" placeholder="txt" id="" oninput="onChangeTextLine(event.target.value)">
+            <button class="switch-line" onclick="onSwitchLine()">Switch</button>
+            <button class="add-line" onclick="onAddLine()">Add</button>
+            <button class="delete-line" onclick="onDeletehLine()">Delete</button>
+        </section>
+    </main>
 
     <script src="/js/services/storage.service.js"></script>
     <script src="/js/services/meme-services.js"></script>
     <script src="/js/meme-controller.js"></script>
 </body>
-
 </html>
