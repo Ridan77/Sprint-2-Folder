@@ -1,0 +1,9 @@
+@media (width > 600px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .nav-bar {
+    flex-direction: row;
+  }
+}
