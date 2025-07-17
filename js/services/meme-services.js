@@ -14,13 +14,15 @@ var gMeme = {
             txt: '',
             size: 30,
             color: 'yellow',
-            pos: { x: 50, y: 50 }
+            pos: { x: 50, y: 50 },
+            align: 'left',
         },
         {
             txt: '',
             size: 30,
             color: 'green',
-            pos: { x: 50, y: 250 }
+            pos: { x: 50, y: 250 },
+            align: 'left',
         }
     ]
 }
@@ -73,7 +75,8 @@ function _creatLine() {
         txt: '',
         size: 20,
         color: 'white',
-        pos: { x: gElCanvas.width / 2 - 50, y: gElCanvas.height / 2 }
+        pos: { x: gElCanvas.width / 2 - 50, y: gElCanvas.height / 2 },
+        align: 'left',
     }
 }
 
@@ -103,10 +106,17 @@ function findLineClicked(clickedx, clickedy) {
         const length = (text) ? (gCtx.measureText(text).width) : 200
         const x2 = x1 + length
         const y2 = getLines()[idx].size + y1
-        const withInXAxis = (clickedx >= x1 && clickedx<=x2)
-        const withInYAxis = (clickedy >= y1 && clickedy<=y2)
-        return (withInXAxis&&withInYAxis)
+        const withInXAxis = (clickedx >= x1 && clickedx <= x2)
+        const withInYAxis = (clickedy >= y1 && clickedy <= y2)
+        return (withInXAxis && withInYAxis)
     })
     return clickedLineIdx
 }
 
+function getAlign(idx) {
+    return getLines[idx].align
+}
+
+function setAlign(dir) {
+    gMeme.lines[getSelectedLineIdx()].align = dir
+}

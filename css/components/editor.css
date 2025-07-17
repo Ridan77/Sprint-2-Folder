@@ -27,13 +27,30 @@ label.color-picker  {
 }
 .decrease-font {
   grid-row: 3;
-  grid-column: 2;
+  grid-column: 1;
 }
 
 .increase-font {
   grid-row: 3;
-  grid-column: 4;
+  grid-column: 2;
 }
+
+.align-left {
+  grid-row: 3;
+  grid-column: 2;
+}
+.align-center {
+  grid-row: 3;
+  grid-column: 2;
+}
+.align-right {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+
+
+
 .share-btn {
   grid-row: 5;
   grid-column: 4/6;

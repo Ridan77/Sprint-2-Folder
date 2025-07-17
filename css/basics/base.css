@@ -10,7 +10,7 @@ body {
 a,
 button {
   color: var(--clr-primary-base);
-  transition: var(--delay);
+  transition: var(--short-delay);
   border-radius: 8%;
   letter-spacing: 0.03em;
   border-radius: 2em;

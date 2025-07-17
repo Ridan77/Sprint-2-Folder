@@ -50,13 +50,15 @@ function renderLines() {
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
         // console.log(x,y,item.txt,item.color,item.size)
-        renderText(item.txt, x, y, item.color, item.size, idx)
+        renderText(item.txt, x, y, item.color, item.size, idx,item.align)
     })
 }
 
-function renderText(text, x, y, color, size, idx) {
+function renderText(text, x, y, color, size, idx,align) {
     gCtx.fillStyle = color
     gCtx.font = `${size}px Arial`
+    console.log(align)
+    gCtx.textAlign = align
     gCtx.fillText(text, x, y)
     if (idx === getSelectedLineIdx()) renderBorder(size)
 }
@@ -72,10 +74,8 @@ function renderBorder(size) {
 
 
 function onChangeTextLine(val) {
-    // const text = gCtx.measureText(val)
     setLine(val)
     renderMeme(val)
-
 }
 
 function onSwitchLine(diff) {
@@ -144,4 +144,11 @@ function onAddEmoji(emoji) {
 }
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
+}
+
+function onChangeAlign(dir){
+    setAlign(dir)
+
+
+
 }
