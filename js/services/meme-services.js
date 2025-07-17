@@ -24,7 +24,7 @@ function resetLines() {
             {
                 txt: '',
                 size: 30,
-                color: 'green',
+                color: 'white',
                 pos: { x: 0, y: 250 },
 
             }
@@ -74,6 +74,7 @@ function deleteLine() {
     gMeme.lines.splice(idx, 1)
     return idx - 1
 }
+
 function _creatLine() {
     return {
         txt: '',
@@ -118,7 +119,7 @@ function findLineClicked(clickedx, clickedy) {
 }
 
 function getAlign(idx) {
-    return getLines[idx].align
+    return getLines()[idx].align
 }
 
 function setAlign(dir) {
@@ -158,7 +159,9 @@ async function uploadImg(imgData, onSuccess) {
 
 function setSavedImgtoCurrent(imgId){
     const album = loadFromStorage(MEME_KEY)
-    console.log(album,imgId) 
-    const idx = album.findIndex((item)=>{item.id ===imgId})
-    console.log(idx) 
+    const idx = album.findIndex((item,idx)=>{
+         return(item.id ===imgId)
+    })
+    gMeme.lines=album[idx].lines
+    gMeme.selectedImgSrc=album[idx].imgUrl
 }

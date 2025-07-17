@@ -24,7 +24,6 @@ async function uploadImg(imgData, onSuccess) {
 
 
 function saveImg(urlStr) {
-
     var album = loadFromStorage(MEME_KEY)
     if (!album) album = [{
         id: makeId(),
@@ -37,16 +36,7 @@ function saveImg(urlStr) {
         lines: gMeme.lines,
         imgUrl: urlStr,
     })
-    console.log(album[0].imgUrl)
     saveToStorage(MEME_KEY, album)
-}
-function saveToStorage(key, val) {
-    localStorage.setItem(key, JSON.stringify(val))
-}
-
-function loadFromStorage(key) {
-    const val = localStorage.getItem(key)
-    return JSON.parse(val)
 }
 
 function getSavedImg() {
@@ -65,7 +55,6 @@ function loadFromStorage(key) {
 function makeId(length = 5) {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     let txt = ''
-
     for (let i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }

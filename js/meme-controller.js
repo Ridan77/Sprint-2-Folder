@@ -6,29 +6,23 @@ function onInit() {
     console.log('init')
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    const lineWidth = 2
     gCtx.textAlign = 'start'
-    gCtx.strokeStyle = 'white'
     gCtx.textBaseline = 'top'
-    gCtx.lineWidth = lineWidth
+    gCtx.lineWidth = 2
 
 }
 
 function onGallryClicked() {
-
     document.querySelector('.gallery-container').classList.remove('hide')
     document.querySelector('.editor').classList.add('hide')
     const elSaved = document.querySelector('.saved-images-container')
     document.querySelector('.saved-images-container').classList.add('hide')
-    console.log(elSaved.classList)
 }
 
 function onEditorClicked() {
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
-
     document.querySelector('.saved-images-container').classList.add('hide')
-
 }
 
 function onSavedClicked() {
@@ -39,12 +33,11 @@ function onSavedClicked() {
 }
 
 function onChoosePic(src) {
-    console.log(src)
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
     resetLines()
     setImageSelected(src)
-    renderMeme(src)
+    renderMeme()
 }
 
 function renderMeme() {
@@ -59,10 +52,8 @@ function renderMeme() {
 
 function renderLines() {
     const lines = getLines()
-    console.log(lines)
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
-        // console.log(x,y,item.txt,item.color,item.size)
         renderText(item.txt, x, y, item.color, item.size, idx)
     })
 }
@@ -116,7 +107,6 @@ function onDeletehLine() {
     setSelectedLineIdx(deleteLine())
     renderMeme()
 }
-
 
 function onDownloadImg(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg')
@@ -186,7 +176,6 @@ function onShare(ev) {
 
 
 function onSave() {
-    renderImgOnly()
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
         saveImg(uploadedImgUrl)
@@ -198,7 +187,6 @@ function renderSavedImgs() {
     console.log('Rendering img')
     const ElSavedContainer = document.querySelector('.saved-images-container')
     const savedImgs = getSavedImg()
-    console.log(savedImgs)
     if (!savedImgs) {
         console.log('No images')
         ElSavedContainer.innerHTML = '<h4>No saved memes were found...</h4>'
@@ -215,7 +203,7 @@ function renderSavedImgs() {
 function onSelectSavedImg(imgId) {
     setSavedImgtoCurrent(imgId)
     onEditorClicked()
-    
+    renderMeme()
 }
 
 
