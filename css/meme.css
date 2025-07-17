@@ -4,20 +4,20 @@
 
 /* SETUP */
 
-@import url(typography.css);
-@import url(variablres.css);
+@import url("typography.css");
+@import url("variablres.css");
 
 /* BASICS */
 
-@import url(base.css);
+@import url("base.css");
 
 /* COMPONENTS */
-@import url(header.css);
-@import url(canvas.css);
-@import url(editor.css);
-@import url(panel.css);
-@import url(gallery.css);
+@import url("header.css");
+@import url("canvas.css");
+@import url("editor.css");
+@import url("panel.css");
+@import url("gallery.css");
 
 /* MQ */
 
-@import url(mq.css);
+@import url("mq.css");

@@ -4,6 +4,7 @@ margin: 10px;
 }
 
 .panel-container{
+    /* wid */
     display: grid;
     grid-template-columns: 1fr  1fr 1fr 1fr;
 
