@@ -134,3 +134,6 @@ function onCanvasClick(ev) {
 }
 
 
+function toggleMenu() {
+  document.body.classList.toggle('menu-open')
+}

@@ -6,4 +6,13 @@
   .nav-bar {
     flex-direction: row;
   }
+.btn-toggle-menu {
+  display: none;
+}
+
+.nav-bar{
+  position: static;
+}
+
+
 }

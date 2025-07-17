@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/meme.css">
+    <link rel="stylesheet" href="css/meme.css">
 </head>
 
 <body onload="onInit()">
@@ -16,16 +16,23 @@
             <li><a href="#" onclick="onEditorClicked()">Memes</a></li>
             <li><a href="#">About</a></li>
         </ul>
-     
+        <button class="btn-toggle-menu" onclick="toggleMenu()">
+					<div class="hamburger-lines">
+						<span class="line line1"></span>
+						<span class="line line2"></span>
+						<span class="line line3"></span>
+					</div>
+				</button>
     </header>
     <main class="gallery-container">
-        <h2>Gallery</h2>
+          <input type="text" name="search-line" class="search-line" placeholder="Search here..." id=""
+                oninput="onChangeTextLine(event.target.value)">
         <div class="gallery">
-            <a onclick="onChoosePic('/img/1.jpg')"> <img src="/img/1.jpg"></a>
-            <a onclick="onChoosePic('/img/2.jpg')"> <img src="/img/2.jpg"></a>
-            <a onclick="onChoosePic('/img/3.jpg')"> <img src="/img/3.jpg"></a>
-            <a onclick="onChoosePic('/img/4.jpg')"> <img src="/img/4.jpg"></a>
-            <a onclick="onChoosePic('/img/5.jpg')"> <img src="/img/5.jpg"></a>
+            <a onclick="onChoosePic('/img/1.jpg')"> <img src="img/1.jpg"></a>
+            <a onclick="onChoosePic('/img/2.jpg')"> <img src="img/2.jpg"></a>
+            <a onclick="onChoosePic('/img/3.jpg')"> <img src="img/3.jpg"></a>
+            <a onclick="onChoosePic('/img/4.jpg')"> <img src="img/4.jpg"></a>
+            <a onclick="onChoosePic('/img/5.jpg')"> <img src="img/5.jpg"></a>
         
         </div>
 
@@ -61,9 +68,9 @@
         </section>
     </main>
     <script src="https://kit.fontawesome.com/f321ebd625.js" crossorigin="anonymous"></script>
-    <script src="/js/services/storage.service.js"></script>
-    <script src="/js/services/meme-services.js"></script>
-    <script src="/js/meme-controller.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/meme-services.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
 
 </html>

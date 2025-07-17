@@ -1,11 +1,13 @@
 
 
-
 html{
     background-color: var(--clr-primary--1);
     color: var(--clr-primary-header-bg)
 }
 
+body{
+    margin: 0;
+}
 a ,button{
       color: var(--clr-primary-header-bg);
       transition: .4s;
