@@ -50,15 +50,13 @@ function renderLines() {
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
         // console.log(x,y,item.txt,item.color,item.size)
-        renderText(item.txt, x, y, item.color, item.size, idx,item.align)
+        renderText(item.txt, x, y, item.color, item.size, idx)
     })
 }
 
-function renderText(text, x, y, color, size, idx,align) {
+function renderText(text, x, y, color, size, idx) {
     gCtx.fillStyle = color
     gCtx.font = `${size}px Arial`
-    console.log(align)
-    gCtx.textAlign = align
     gCtx.fillText(text, x, y)
     if (idx === getSelectedLineIdx()) renderBorder(size)
 }
@@ -136,9 +134,9 @@ function onCanvasClick(ev) {
 function onAddEmoji(emoji) {
     const elInput = document.querySelector('.input-text')
     var line = getLines()[getSelectedLineIdx()].txt
-    line+=emoji
+    line += emoji
     setLine(line)
-    elInput.value=line
+    elInput.value = line
     renderMeme()
 
 }
@@ -146,14 +144,14 @@ function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
-function onChangeAlign(dir){
+function onChangeAlign(dir) {
     setAlign(dir)
     renderMeme()
 }
 
 function onUploadToFB(url) {
+    document.querySelector('.share-container').innerHTML = ''
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
-    document.querySelector('.share-container').innerHTML=''
 }
 
 function onShare(ev) {
