@@ -148,7 +148,33 @@ function toggleMenu() {
 
 function onChangeAlign(dir){
     setAlign(dir)
+    renderMeme()
+}
+
+function onUploadToFB(url) {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+    document.querySelector('.share-container').innerHTML=''
+}
+
+function onShare(ev) {
+    ev.preventDefault()
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+            <a href="${uploadedImgUrl}">Image Url</a>
+            <p>Image url: ${uploadedImgUrl}</p>
+           
+            <button class="btn-facebook" target="_blank" onclick="onUploadToFB('${encodedUploadedImgUrl}')">
+                Share on Facebook  
+            </button>
+        `
+    }
+    uploadImg(canvasData, onSuccess)
+}
 
 
-
+function onSaveImg() {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    saveImg(imgContent)
 }
