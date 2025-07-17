@@ -12,21 +12,21 @@
     <header class="main-nav">
         <h2>Meme Generator</h2>
         <ul class="nav-bar list clean-list">
-            <li><a class="active" onclick="onGallryClicked()" href="#">Gallery</a></li>
+            <li><a href="#" onclick="onGallryClicked()">Gallery</a></li>
             <li><a href="#" onclick="onEditorClicked()">Memes</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#" onclick="onSavedClicked()">Saved Memes</a></li>
         </ul>
         <button class="btn-toggle-menu" onclick="toggleMenu()">
-					<div class="hamburger-lines">
-						<span class="line line1"></span>
-						<span class="line line2"></span>
-						<span class="line line3"></span>
-					</div>
-				</button>
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+        </button>
     </header>
     <main class="gallery-container">
-          <input type="text" name="search-line" class="search-line" placeholder="Search here..." id=""
-                oninput="onChangeTextLine(event.target.value)">
+        <input type="text" name="search-line" class="search-line" placeholder="Search here..." id=""
+            oninput="onChangeTextLine(event.target.value)">
         <div class="gallery">
             <a onclick="onChoosePic('img/1.jpg')"> <img src="img/1.jpg"></a>
             <a onclick="onChoosePic('img/2.jpg')"> <img src="img/2.jpg"></a>
@@ -46,7 +46,7 @@
             <a onclick="onChoosePic('img/16.jpg')"> <img src="img/16.jpg"></a>
             <a onclick="onChoosePic('img/17.jpg')"> <img src="img/17.jpg"></a>
             <a onclick="onChoosePic('img/18.jpg')"> <img src="img/18.jpg"></a>
-        
+
         </div>
 
     </main>
@@ -60,39 +60,52 @@
                 oninput="onChangeTextLine(event.target.value)">
 
 
-            <button class="up-line line-controler" onclick="onMoveLine(-1)"><img src="img/Icons/up-arrow (1).png"></button>
-            <button class="down-line line-controler" onclick="onMoveLine(+1)"><img src="img/Icons/down-arrow.png"></button>
+            <button class="up-line line-controler" onclick="onMoveLine(-1)"><img
+                    src="img/Icons/up-arrow (1).png"></button>
+            <button class="down-line line-controler" onclick="onMoveLine(+1)"><img
+                    src="img/Icons/down-arrow.png"></button>
             <button class="switch-line line-controler" onclick="onSwitchLine(1)"><img src="img/Icons/swap.png"></button>
             <button class="add-line line-controler  " onclick="onAddLine()"><img src="img/Icons/plus.png"></button>
-            <button class="delete-line line-controler" onclick="onDeletehLine()"><img src="img/Icons/trash.png"></button>
+            <button class="delete-line line-controler" onclick="onDeletehLine()"><img
+                    src="img/Icons/trash.png"></button>
 
-            <button class="text-controler increase-font" onclick="onChangeFontSize(+1)"><img src="img/Icons/font.png"></button>
-            <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)"><img src="img/Icons/font (1).png"></button>
-            <button class="text-controler left-align" onclick="onChangeAlign('left')"><img src="img/Icons/align-to-left.png"></button>
-            <button class="text-controler center-align" onclick="onChangeAlign('center')"><img src="img/Icons/center-text-alignment.png"></button>
-            <button class="text-controler right=align" onclick="onChangeAlign('right')"><img src="img/Icons/align-to-right.png"></button>
-            
+            <button class="text-controler increase-font" onclick="onChangeFontSize(+1)"><img
+                    src="img/Icons/font.png"></button>
+            <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)"><img
+                    src="img/Icons/font (1).png"></button>
+            <button class="text-controler left-align" onclick="onChangeAlign('left')"><img
+                    src="img/Icons/align-to-left.png"></button>
+            <button class="text-controler center-align" onclick="onChangeAlign('center')"><img
+                    src="img/Icons/center-text-alignment.png"></button>
+            <button class="text-controler right=align" onclick="onChangeAlign('right')"><img
+                    src="img/Icons/align-to-right.png"></button>
+
             <button class="emoji head-blow decrease-font" onclick="onAddEmoji('🤯')">🤯</button>
             <button class="emoji sun-glass decrease-font" onclick="onAddEmoji('😎')">😎</button>
             <button class="emoji vommit decrease-font" onclick="onAddEmoji('🤮')">🤮</button>
             <button class="emoji poo decrease-font" onclick="onAddEmoji('💩')">💩</button>
             <button class="emoji clown decrease-font" onclick="onAddEmoji('🤡')">🤡</button>
-            
-            
-            
+
+
+
             <label for="color-picker"><img class="color-picker" src="img/Icons/paint-board-and-brush.png">
-                <input type="color" name="color-picker" value="#000000" id="color-picker" class="color-picker" onchange="onSetColor(event.target.value)" />
+                <input type="color" name="color-picker" value="#000000" id="color-picker" class="color-picker"
+                    onchange="onSetColor(event.target.value)" />
             </label>
-            
-            
+
+
             <button class="share-btn" onclick="onShare(event)">Share</button>
-            <button class="download-btn" >
+            <button class="download-btn">
                 <a href="#" class="btn " onclick="onDownloadImg(this)" download="image.jpg">Download</a>
             </button>
             <button class="save-btn" onclick="onSave()">Save Meme</button>
 
         </section>
-        <div class="share-container" ></div>
+
+        <div class="share-container "> </div>
+    </main>
+    <main class="saved-images-container ">
+
     </main>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme-services.js"></script>

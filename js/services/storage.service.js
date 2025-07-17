@@ -23,22 +23,22 @@ async function uploadImg(imgData, onSuccess) {
 }
 
 
-function saveImg(img){
-
-    var album = loadFromStorage(IMAGE_KEY)
-    if (!album) album=[{id: makeId(), img}]
-    else album.unshift({id :makeId(),img})
-    console.log(album)
-    saveToStorage(IMAGE_KEY,album)
-}
-
-function saveImg(img){
+function saveImg(urlStr) {
 
     var album = loadFromStorage(MEME_KEY)
-    if (!album) album=[{id: makeId(), img}]
-    else album.unshift({id :makeId(),img})
-    console.log(album)
-    saveToStorage(MEME_KEY,album)
+    if (!album) album = [{
+        id: makeId(),
+        lines: gMeme.lines,
+        imgUrl: urlStr,
+    }
+    ]
+    else album.unshift({
+        id: makeId(),
+        lines: gMeme.lines,
+        imgUrl: urlStr,
+    })
+    console.log(album[0].imgUrl)
+    saveToStorage(MEME_KEY, album)
 }
 function saveToStorage(key, val) {
     localStorage.setItem(key, JSON.stringify(val))
@@ -49,6 +49,9 @@ function loadFromStorage(key) {
     return JSON.parse(val)
 }
 
+function getSavedImg() {
+    return loadFromStorage(MEME_KEY)
+}
 
 function saveToStorage(key, val) {
     localStorage.setItem(key, JSON.stringify(val))

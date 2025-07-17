@@ -6,13 +6,15 @@
   .nav-bar {
     flex-direction: row;
   }
-.btn-toggle-menu {
-  display: none;
-}
+  .btn-toggle-menu {
+    display: none;
+  }
 
-.nav-bar{
-  position: static;
-}
+  .nav-bar {
+    position: static;
+  }
 
-
+  .saved-images-container {
+    grid-template-columns:1fr 1fr  1fr 1fr;
+  }
 }

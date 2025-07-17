@@ -15,15 +15,27 @@ function onInit() {
 }
 
 function onGallryClicked() {
-    console.log('gallery')
+
     document.querySelector('.gallery-container').classList.remove('hide')
     document.querySelector('.editor').classList.add('hide')
+    const elSaved = document.querySelector('.saved-images-container')
+    document.querySelector('.saved-images-container').classList.add('hide')
+    console.log(elSaved.classList)
 }
 
 function onEditorClicked() {
-    console.log('editor')
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
+
+    document.querySelector('.saved-images-container').classList.add('hide')
+
+}
+
+function onSavedClicked() {
+    document.querySelector('.gallery-container').classList.add('hide')
+    document.querySelector('.editor').classList.add('hide')
+    document.querySelector('.saved-images-container').classList.remove('hide')
+    renderSavedImgs()
 }
 
 function onChoosePic(src) {
@@ -155,7 +167,7 @@ function onUploadToFB(url) {
 }
 
 function onShare(ev) {
-    ev.preventDefault()
+
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
@@ -173,6 +185,25 @@ function onShare(ev) {
 
 
 function onSave() {
-    const imgContent = gElCanvas.toDataURL('image/jpeg')
-    saveImg(imgContent)
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+    function onSuccess(uploadedImgUrl) {
+        saveImg(uploadedImgUrl)
+    }
+    uploadImg(canvasData, onSuccess)
+}
+
+function renderSavedImgs() {
+    console.log('Rendering img')
+    const ElSavedContainer = document.querySelector('.saved-images-container')
+    const savedImgs = getSavedImg()
+    console.log(savedImgs)
+    if (!savedImgs) {
+        console.log('No images')
+        ElSavedContainer.innerHTML = '<h4>No saved memes were found...</h4>'
+        return
+    }
+    const strHTMLs = savedImgs.map(item => (
+        `<img class="${item.id}" src="${item.imgUrl}">`
+    ))
+    ElSavedContainer.innerHTML = strHTMLs.join('')
 }

@@ -1,0 +1,8 @@
+.saved-images-container {
+  color: aliceblue;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px;
+  gap:20px;
+
+}

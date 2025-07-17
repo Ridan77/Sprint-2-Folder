@@ -67,7 +67,7 @@ body.menu-open .line.line3 {
 }
 
 body.menu-open .nav-bar {
-  top: 0px;
+  top: 10px;
   background-color: var(--clr-primary-header-bg);
 }
 

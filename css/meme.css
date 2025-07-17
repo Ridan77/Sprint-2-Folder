@@ -7,9 +7,6 @@
 @import url("setup/typography.css");
 @import url("setup/variablres.css");
 
-/* BASICS */
-
-@import url("basics/base.css");
 
 /* COMPONENTS */
 @import url("components/header.css");
@@ -17,7 +14,11 @@
 @import url("components/editor.css");
 @import url("components/gallery.css");
 @import url("components/share-container.css");
+@import url("components/saved-images-container.css");
 
+/* BASICS */
+
+@import url("basics/base.css");
 
 /* MQ */
 

@@ -1,9 +1,10 @@
 .share-container{
-    
+    color: var(--clr-primary--3);
+
     margin:auto;
     margin-bottom: 20px;
-    margin-top: 20px;
-    width: fit-content;
-    font-size: 0.8em;
+    margin-top: 50px;
+ 
+    font-size: 0.6em;
     text-align: center;
 }
