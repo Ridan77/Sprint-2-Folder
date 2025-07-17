@@ -59,6 +59,7 @@ function renderMeme() {
 
 function renderLines() {
     const lines = getLines()
+    console.log(lines)
     lines.forEach((item, idx) => {
         const { x, y } = getLinePosition(idx)
         // console.log(x,y,item.txt,item.color,item.size)
@@ -185,6 +186,7 @@ function onShare(ev) {
 
 
 function onSave() {
+    renderImgOnly()
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
         saveImg(uploadedImgUrl)
@@ -211,8 +213,10 @@ function renderSavedImgs() {
 }
 
 function onSelectSavedImg(imgId) {
-    console.log(imgId)
     setSavedImgtoCurrent(imgId)
     onEditorClicked()
-    renderMeme()
+    
 }
+
+
+
