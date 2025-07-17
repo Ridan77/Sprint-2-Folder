@@ -3,30 +3,34 @@
 const MOVE_STEP = 10
 const FONT_STEP = 4
 
-var gMeme = {
+var gMeme
 
-    selectedImgId: 1,
-    selectedImgSrc: '',
+resetLines()
 
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: '',
-            size: 30,
-            color: 'yellow',
-            pos: { x: 50, y: 50 },
-            align: 'left',
-        },
-        {
-            txt: '',
-            size: 30,
-            color: 'green',
-            pos: { x: 50, y: 250 },
-            align: 'left',
-        }
-    ]
+function resetLines() {
+    gMeme = {
+        selectedImgId: 1,
+        selectedImgSrc: '',
+
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: '',
+                size: 30,
+                color: 'yellow',
+                pos: { x: 0, y: 50 },
+
+            },
+            {
+                txt: '',
+                size: 30,
+                color: 'green',
+                pos: { x: 0, y: 250 },
+
+            }
+        ]
+    }
 }
-
 
 function getLines() {
     return gMeme.lines
@@ -76,7 +80,7 @@ function _creatLine() {
         size: 20,
         color: 'white',
         pos: { x: gElCanvas.width / 2 - 50, y: gElCanvas.height / 2 },
-        align: 'left',
+
     }
 }
 
@@ -118,7 +122,19 @@ function getAlign(idx) {
 }
 
 function setAlign(dir) {
-    gMeme.lines[getSelectedLineIdx()].align = dir
+    const currLine = getLines()[getSelectedLineIdx()].txt
+    const textMetric = gCtx.measureText(currLine)
+    const length = textMetric.width
+    switch (dir) {
+        case 'left':
+            gMeme.lines[getSelectedLineIdx()].pos.x = 0
+            break
+        case 'center':
+            gMeme.lines[getSelectedLineIdx()].pos.x = 150 - (length / 2)
+            break
+        case 'right':
+            gMeme.lines[getSelectedLineIdx()].pos.x = 300 - length
+    }
 }
 
 async function uploadImg(imgData, onSuccess) {

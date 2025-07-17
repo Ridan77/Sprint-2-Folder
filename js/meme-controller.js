@@ -11,8 +11,7 @@ function onInit() {
     gCtx.strokeStyle = 'white'
     gCtx.textBaseline = 'top'
     gCtx.lineWidth = lineWidth
-    // resizeCanvas()
-    // window.addEventListener('resize', resizeCanvas)
+
 }
 
 function onGallryClicked() {
@@ -31,6 +30,7 @@ function onChoosePic(src) {
     console.log(src)
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
+    resetLines()
     setImageSelected(src)
     renderMeme(src)
 }
@@ -172,7 +172,7 @@ function onShare(ev) {
 }
 
 
-function onSaveImg() {
+function onSave() {
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     saveImg(imgContent)
 }

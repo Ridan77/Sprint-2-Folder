@@ -1,7 +1,7 @@
 'use strict'
 
+const MEME_KEY = 'MEMES'
 
-// on submit call to this function
 
 async function uploadImg(imgData, onSuccess) {
     const CLOUD_NAME = 'webify'
@@ -32,6 +32,14 @@ function saveImg(img){
     saveToStorage(IMAGE_KEY,album)
 }
 
+function saveImg(img){
+
+    var album = loadFromStorage(MEME_KEY)
+    if (!album) album=[{id: makeId(), img}]
+    else album.unshift({id :makeId(),img})
+    console.log(album)
+    saveToStorage(MEME_KEY,album)
+}
 function saveToStorage(key, val) {
     localStorage.setItem(key, JSON.stringify(val))
 }
@@ -41,3 +49,22 @@ function loadFromStorage(key) {
     return JSON.parse(val)
 }
 
+
+function saveToStorage(key, val) {
+    localStorage.setItem(key, JSON.stringify(val))
+}
+
+function loadFromStorage(key) {
+    const val = localStorage.getItem(key)
+    return JSON.parse(val)
+}
+
+function makeId(length = 5) {
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let txt = ''
+
+    for (let i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length))
+    }
+    return txt
+}

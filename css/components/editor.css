@@ -5,7 +5,7 @@
 .panel-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 10px;
   width: 300px;
   height: 250px;
@@ -19,6 +19,11 @@
 .download-btn {
   grid-row: 5;
   grid-column: 1/3;
+}
+
+.save-btn{
+   grid-row: 6;
+  grid-column: 1/-1;
 }
 
 label.color-picker  {
@@ -84,7 +89,7 @@ label.color-picker  {
     padding: 2px;
 }
 .panel-container button img {
-  width: 80%;
+  width: 70%;
   margin-top: 2px;
 
 }
