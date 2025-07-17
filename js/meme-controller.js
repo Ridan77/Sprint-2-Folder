@@ -203,7 +203,16 @@ function renderSavedImgs() {
         return
     }
     const strHTMLs = savedImgs.map(item => (
-        `<img class="${item.id}" src="${item.imgUrl}">`
+        `<a onclick="onSelectSavedImg('${item.id}')" class="${item.id}">
+           <img src="${item.imgUrl}">           </a>`
     ))
+    console.log(strHTMLs.join(''))
     ElSavedContainer.innerHTML = strHTMLs.join('')
+}
+
+function onSelectSavedImg(imgId) {
+    console.log(imgId)
+    setSavedImgtoCurrent(imgId)
+    onEditorClicked()
+    renderMeme()
 }

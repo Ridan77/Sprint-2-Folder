@@ -155,3 +155,10 @@ async function uploadImg(imgData, onSuccess) {
         console.log(err)
     }
 }
+
+function setSavedImgtoCurrent(imgId){
+    const album = loadFromStorage(MEME_KEY)
+    console.log(album,imgId) 
+    const idx = album.findIndex(item=>{item.id ===imgId})
+    console.log(idx) 
+}
