@@ -4,14 +4,14 @@
   align-items: center;
   background-color: var(--clr-primary-header-bg);
   transition: var(--delay);
-  height:50px;
+  height: 50px;
 }
 
 .nav-bar {
   display: flex;
   position: absolute;
-  right:70px;
-  top:-100px;
+  right: 70px;
+  top: -100px;
   flex-direction: column;
   gap: 10px;
   margin: 10px;
@@ -45,34 +45,32 @@ header a {
 .hamburger-lines {
   height: 26px;
   width: 32px;
-margin-right: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
- body.menu-open .line.line1 {
-	rotate: -45deg;
-	transform-origin: top right;
+body.menu-open .line.line1 {
+  rotate: -45deg;
+  transform-origin: top right;
 }
 
- body.menu-open .line.line2 {
-	scale: 0;
-	opacity: 0;
+body.menu-open .line.line2 {
+  scale: 0;
+  opacity: 0;
 }
 
- body.menu-open .line.line3 {
-	rotate: 45deg;
-	transform-origin: bottom right;
+body.menu-open .line.line3 {
+  rotate: 45deg;
+  transform-origin: bottom right;
 }
 
-
-body.menu-open .nav-bar{
-   top:0px;
-   background-color: var(--clr-primary-header-bg);
+body.menu-open .nav-bar {
+  top: 0px;
+  background-color: var(--clr-primary-header-bg);
 }
 
-
-body.menu-open .main-nav{
-  height :100px;
+body.menu-open .main-nav {
+  height: 100px;
 }

@@ -10,7 +10,7 @@ body {
 a,
 button {
   color: var(--clr-primary-base);
-  transition: 0.4s;
+  transition: var(--delay);
   border-radius: 8%;
   letter-spacing: 0.03em;
   border-radius: 2em;
@@ -41,23 +41,5 @@ button:hover {
 
 img {
   width: 100%;
-}
-
-/* .btn {
-  letter-spacing: 0.03em;
-  color: var(--clrPrimary-2);
-  background-color: white;
-  border: 2px solid var(--clrPrimary-2);
-  padding: 0.625em 1.25em;
-  font-size: 1em;
-  font-family: inherit;
-  cursor: pointer;
-
-  transition: color 0.3s, border-color 0.3s, padding 0.6s;
-}
-
-.btn:hover {
-  color: var(--clrSecondary);
-  border-color: var(--clrSecondary);
 }
 

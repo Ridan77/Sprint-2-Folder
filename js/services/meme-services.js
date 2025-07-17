@@ -12,13 +12,13 @@ var gMeme = {
     lines: [
         {
             txt: '',
-            size: 20,
+            size: 30,
             color: 'yellow',
             pos: { x: 50, y: 50 }
         },
         {
             txt: '',
-            size: 20,
+            size: 30,
             color: 'green',
             pos: { x: 50, y: 250 }
         }
