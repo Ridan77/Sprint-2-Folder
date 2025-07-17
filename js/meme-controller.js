@@ -72,7 +72,7 @@ function renderBorder(size) {
 
 
 function onChangeTextLine(val) {
-    const text = gCtx.measureText(val)
+    // const text = gCtx.measureText(val)
     setLine(val)
     renderMeme(val)
 
@@ -133,7 +133,15 @@ function onCanvasClick(ev) {
     }
 }
 
+function onAddEmoji(emoji) {
+    const elInput = document.querySelector('.input-text')
+    var line = getLines()[getSelectedLineIdx()].txt
+    line+=emoji
+    setLine(line)
+    elInput.value=line
+    renderMeme()
 
+}
 function toggleMenu() {
-  document.body.classList.toggle('menu-open')
+    document.body.classList.toggle('menu-open')
 }

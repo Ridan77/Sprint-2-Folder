@@ -1,16 +1,81 @@
-.editor{
-margin: 10px;
+.editor {
+  margin: 10px;
+}
+
+.panel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  width: 300px;
+  margin: auto;
+}
+
+.input-text {
+  grid-column: 1/-1;
+}
+
+.download-btn {
+  grid-row: 5;
+  grid-column: 1/3;
+}
+
+label.color-picker  {
+  grid-row: 3;
+  grid-column: 3;
+}
+.decrease-font {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.increase-font {
+  grid-row: 3;
+  grid-column: 4;
+}
+.share-btn {
+  grid-row: 5;
+  grid-column: 4/6;
+}
+
+.emoji{
+    font-size: 2em;
+}
+.head-blow{
+    grid-row: 4;
+     grid-column: 1;
+}
+.sun-glass{
+    grid-row: 4;
+     grid-column: 2;
+}
+.vommit{
+    grid-row: 4;
+     grid-column: 3;
+}
+.poo{
+    grid-row: 4;
+     grid-column: 4;
+}
+.clown{
+    grid-row: 4;
+     grid-column: 5;
+}
+.panel-container button {
+  /* box-shadow: ; */
+    padding: 2px;
+}
+.panel-container button img {
+  width: 80%;
+  margin-top: 2px;
 
 }
 
-.panel-container{
-    /* wid */
-    display: grid;
-    grid-template-columns: 1fr  1fr 1fr 1fr;
-    gap:10px;
-
+input.color-picker  {
+  display: none;
 }
 
-.input-text{
-    grid-column: 1/-1;
+button:hover {
+  filter: grayscale(100%);
+  background-color: transparent;
 }

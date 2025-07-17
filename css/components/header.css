@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--clr-primary-header-bg);
-  transition: .5s;
+  transition: var(--delay);
   height:50px;
 }
 
@@ -15,7 +15,7 @@
   flex-direction: column;
   gap: 10px;
   margin: 10px;
-  transition: .5s;
+  transition: var(--delay);
 }
 
 header h2 {
@@ -33,7 +33,7 @@ header a {
   height: 4px;
   width: 100%;
   background-color: aliceblue;
-  transition: 0.4s;
+  transition: var(--delay);
 }
 
 .btn-toggle-menu {
@@ -45,7 +45,7 @@ header a {
 .hamburger-lines {
   height: 26px;
   width: 32px;
-
+margin-right: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -58,7 +58,7 @@ header a {
 
  body.menu-open .line.line2 {
 	scale: 0;
-	/* opacity: 0; */
+	opacity: 0;
 }
 
  body.menu-open .line.line3 {

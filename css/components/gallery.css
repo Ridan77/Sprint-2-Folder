@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr  ;
     gap :20px;
-    /* margin: 10px; */
+    margin: 10px;
 }
 
 .gallery img{

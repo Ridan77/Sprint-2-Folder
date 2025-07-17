@@ -47,23 +47,30 @@
                 oninput="onChangeTextLine(event.target.value)">
 
 
-            <button class="up-line line-controler" onclick="onMoveLine(-1)">⬆️</button>
-            <button class="down-line line-controler" onclick="onMoveLine(+1)">⬇️</button>
-            <button class="switch-line line-controler" onclick="onSwitchLine(1)">Switch</button>
-            <button class="add-line line-controler  " onclick="onAddLine()">Add</button>
-            <button class="delete-line line-controler" onclick="onDeletehLine()">Delete</button>
+            <button class="up-line line-controler" onclick="onMoveLine(-1)"><img src="img/icons/up-arrow (1).png"></button>
+            <button class="down-line line-controler" onclick="onMoveLine(+1)"><img src="img/icons/down-arrow.png"></button>
+            <button class="switch-line line-controler" onclick="onSwitchLine(1)"><img src="img/Icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <button class="add-line line-controler  " onclick="onAddLine()"><img src="img/Icons/add.png"></button>
+            <button class="delete-line line-controler" onclick="onDeletehLine()"><img src="img/Icons/trash.png"></button>
 
-            <button class="text-controler increase-font" onclick="onChangeFontSize(+1)">F+</button>
-            <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)">F-</button>
-           
-            <input type="color" value="#000000" id="color-picker" class="color-picker" onchange="onSetColor(event.target.value)" />
-
-			<!-- <input type="color" value="#000000" id="color-picker" class="color-picker" onchange="onSetBrush('color',event.target.value)" /> -->
-
-
-            <button>
-
-                <a href="#" class="btn download-btn" onclick="onDownloadImg(this)" download="image.jpg">Download</a>
+            <button class="text-controler increase-font" onclick="onChangeFontSize(+1)"><img src="img/Icons/increase font - icon.png"></button>
+            <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)"><img src="img/Icons/decrease font - icon.png"></button>
+            <button class="emoji head-blow decrease-font" onclick="onAddEmoji('🤯')">🤯</button>
+            <button class="emoji sun-glass decrease-font" onclick="onAddEmoji('😎')">😎</button>
+            <button class="emoji vommit decrease-font" onclick="onAddEmoji('🤮')">🤮</button>
+            <button class="emoji poo decrease-font" onclick="onAddEmoji('💩')">💩</button>
+            <button class="emoji clown decrease-font" onclick="onAddEmoji('🤡')">🤡</button>
+            
+            
+            
+            <label for="color-picker"><img class="color-picker" src="img/Icons/paint-board-and-brush.png">
+                <input type="color" name="color-picker" value="#000000" id="color-picker" class="color-picker" onchange="onSetColor(event.target.value)" />
+            </label>
+            
+            
+            <button class="share-btn" onclick="onShare()">Share</button>
+            <button class="download-btn" >
+                <a href="#" class="btn " onclick="onDownloadImg(this)" download="image.jpg">Download</a>
             </button>
         </section>
     </main>
