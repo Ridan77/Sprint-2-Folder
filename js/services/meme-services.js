@@ -21,13 +21,7 @@ function resetLines() {
                 pos: { x: 0, y: 50 },
 
             },
-            {
-                txt: '',
-                size: 30,
-                color: 'white',
-                pos: { x: 0, y: 250 },
-
-            }
+     
         ]
     }
 }
@@ -52,6 +46,13 @@ function setSelectedLineIdx(idx) {
 
 function getLinePosition(idx) {
     return gMeme.lines[idx].pos
+}
+
+function setLinePos(pos){
+        const idx = getSelectedLineIdx()
+        gMeme.lines[idx].pos.x=pos.x
+        gMeme.lines[idx].pos.y=pos.y
+
 }
 
 function getTotalLine() {

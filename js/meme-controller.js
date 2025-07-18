@@ -1,6 +1,7 @@
 'use strict'
 var gElCanvas
 var gCtx
+var gIsMouseDown = false
 
 function onInit() {
     console.log('init')
@@ -68,8 +69,9 @@ function renderText(text, x, y, color, size, idx) {
 function renderBorder(size) {
     const idx = getSelectedLineIdx()
     const text = getLines()[idx].txt
+    gCtx.strokeStyle = 'white'
     const textMetric = gCtx.measureText(text)
-    const length = (text) ? (textMetric.width + 10) : 200
+    const length = (textMetric.width >200) ? (textMetric.width + 10) : 200
     const { x, y } = getLinePosition(idx)
     gCtx.strokeRect(x - 5, y - 5, length, size + 5)
 }
@@ -207,4 +209,47 @@ function onSelectSavedImg(imgId) {
 }
 
 
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    gIsMouseDown = true
+    onCanvasClick(pos)
+}
 
+function onUp(ev) {
+    gIsMouseDown = false
+}
+
+function onDraw(ev) {
+    if (!gIsMouseDown) return
+    const pos = getEvPos(ev)
+    setLinePos(pos)
+    renderMeme()
+}
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+    if (TOUCH_EVS.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
+}
+
+function onCanvasClick(pos) {
+    const lineClickedIdx = findLineClicked(pos.x, pos.y)
+    if (lineClickedIdx !== -1) {
+        setSelectedLineIdx(lineClickedIdx)
+        const elInput = document.querySelector('.input-text')
+        const newLineTxt = getLines()[getSelectedLineIdx()].txt
+        elInput.value = newLineTxt
+        renderMeme()
+    }
+}
