@@ -2,6 +2,7 @@
 var gElCanvas
 var gCtx
 var gIsMouseDown = false
+var gPrevPos
 
 function onInit() {
     console.log('init')
@@ -71,7 +72,7 @@ function renderBorder(size) {
     const text = getLines()[idx].txt
     gCtx.strokeStyle = 'white'
     const textMetric = gCtx.measureText(text)
-    const length = (textMetric.width >200) ? (textMetric.width + 10) : 200
+    const length = (textMetric.width > 200) ? (textMetric.width + 10) : 200
     const { x, y } = getLinePosition(idx)
     gCtx.strokeRect(x - 5, y - 5, length, size + 5)
 }
@@ -95,7 +96,7 @@ function onSwitchLine(diff) {
 }
 
 function onMoveLine(dir) {
-    moveLine(dir)
+    moveLineFromButton(dir)
     renderMeme()
 }
 
@@ -211,8 +212,10 @@ function onSelectSavedImg(imgId) {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
+    if (onCanvasClick(pos) === -1) return
     gIsMouseDown = true
-    onCanvasClick(pos)
+    gPrevPos = pos
+
 }
 
 function onUp(ev) {
@@ -222,7 +225,13 @@ function onUp(ev) {
 function onDraw(ev) {
     if (!gIsMouseDown) return
     const pos = getEvPos(ev)
-    setLinePos(pos)
+
+    const dx = pos.x - gPrevPos.x
+    const dy = pos.y - gPrevPos.y
+    console.log('prev:', gPrevPos.x, gPrevPos.y, 'pos:', pos.x, pos.y, 'd:', dx, dy)
+
+    moveLineFromDragAndDrop(dx, dy)
+    gPrevPos=pos
     renderMeme()
 }
 
@@ -252,4 +261,5 @@ function onCanvasClick(pos) {
         elInput.value = newLineTxt
         renderMeme()
     }
+    return lineClickedIdx
 }

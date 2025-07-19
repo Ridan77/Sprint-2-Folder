@@ -50,8 +50,8 @@ function getLinePosition(idx) {
 
 function setLinePos(pos){
         const idx = getSelectedLineIdx()
-        gMeme.lines[idx].pos.x=pos.x
-        gMeme.lines[idx].pos.y=pos.y
+        gMeme.lines[idx].pos=pos
+  
 
 }
 
@@ -59,9 +59,15 @@ function getTotalLine() {
     return gMeme.lines.length
 }
 
-function moveLine(dir) {
+function moveLineFromButton(dir) {
     const idx = getSelectedLineIdx()
     gMeme.lines[idx].pos.y += MOVE_STEP * dir
+}
+
+function moveLineFromDragAndDrop(dx,dy) {
+    const idx = getSelectedLineIdx()
+    gMeme.lines[idx].pos.x += dx
+    gMeme.lines[idx].pos.y += dy
 }
 
 function addLine() {
