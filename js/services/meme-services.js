@@ -19,10 +19,7 @@ function resetLines() {
                 size: 30,
                 color: 'yellow',
                 pos: { x: 0, y: 50 },
-
-            },
-     
-        ]
+            },]
     }
 }
 
@@ -48,10 +45,10 @@ function getLinePosition(idx) {
     return gMeme.lines[idx].pos
 }
 
-function setLinePos(pos){
-        const idx = getSelectedLineIdx()
-        gMeme.lines[idx].pos=pos
-  
+function setLinePos(pos) {
+    const idx = getSelectedLineIdx()
+    gMeme.lines[idx].pos = pos
+
 
 }
 
@@ -64,7 +61,7 @@ function moveLineFromButton(dir) {
     gMeme.lines[idx].pos.y += MOVE_STEP * dir
 }
 
-function moveLineFromDragAndDrop(dx,dy) {
+function moveLineFromDragAndDrop(dx, dy) {
     const idx = getSelectedLineIdx()
     gMeme.lines[idx].pos.x += dx
     gMeme.lines[idx].pos.y += dy
@@ -72,7 +69,6 @@ function moveLineFromDragAndDrop(dx,dy) {
 
 function addLine() {
     gMeme.lines.push(_creatLine())
-    console.log(gMeme.lines)
     return gMeme.lines.length - 1
 }
 
@@ -106,7 +102,7 @@ function setLineColor(val) {
     gMeme.lines[idx].color = val
 }
 
-function getPictureSelected() {
+function getPictureSelectedSrc() {
     return gMeme.selectedImgSrc
 }
 
@@ -164,11 +160,11 @@ async function uploadImg(imgData, onSuccess) {
     }
 }
 
-function setSavedImgtoCurrent(imgId){
+function setSavedImgtoCurrent(imgId) {
     const album = loadFromStorage(MEME_KEY)
-    const idx = album.findIndex((item,idx)=>{
-         return(item.id ===imgId)
+    const idx = album.findIndex((item, idx) => {
+        return (item.id === imgId)
     })
-    gMeme.lines=album[idx].lines
-    gMeme.selectedImgSrc=album[idx].imgUrl
+    gMeme.lines = album[idx].lines
+    gMeme.selectedImgSrc = album[idx].imgUrl
 }

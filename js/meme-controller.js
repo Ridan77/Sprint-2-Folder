@@ -3,6 +3,7 @@ var gElCanvas
 var gCtx
 var gIsMouseDown = false
 var gPrevPos
+var gRenderWithBorder = true
 
 function onInit() {
     console.log('init')
@@ -11,7 +12,6 @@ function onInit() {
     gCtx.textAlign = 'start'
     gCtx.textBaseline = 'top'
     gCtx.lineWidth = 2
-
 }
 
 function onGallryClicked() {
@@ -39,11 +39,12 @@ function onChoosePic(src) {
     document.querySelector('.editor').classList.remove('hide')
     resetLines()
     setImageSelected(src)
+    document.querySelector('.input-text').value = ''
     renderMeme()
 }
 
 function renderMeme() {
-    const src = getPictureSelected()
+    const src = getPictureSelectedSrc()
     const elImg = new Image()
     elImg.src = src
     elImg.onload = () => {
@@ -64,7 +65,7 @@ function renderText(text, x, y, color, size, idx) {
     gCtx.fillStyle = color
     gCtx.font = `${size}px Arial`
     gCtx.fillText(text, x, y)
-    if (idx === getSelectedLineIdx()) renderBorder(size)
+    if (idx === getSelectedLineIdx() && gRenderWithBorder) renderBorder(size)
 }
 
 function renderBorder(size) {
@@ -80,7 +81,7 @@ function renderBorder(size) {
 
 function onChangeTextLine(val) {
     setLine(val)
-    renderMeme(val)
+    renderMeme()
 }
 
 function onSwitchLine(diff) {
@@ -112,8 +113,11 @@ function onDeletehLine() {
 }
 
 function onDownloadImg(elLink) {
+    gRenderWithBorder = false
+    renderMeme()
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
+    gRenderWithBorder = true
 }
 
 function onChangeFontSize(diff) {
@@ -125,18 +129,6 @@ function onSetColor(val) {
     setLineColor(val)
 }
 
-function onCanvasClick(ev) {
-    const { offsetX, offsetY, clientX, clientY } = ev
-    const lineClickedIdx = findLineClicked(offsetX, offsetY)
-    if (lineClickedIdx !== -1) {
-        setSelectedLineIdx(lineClickedIdx)
-        const elInput = document.querySelector('.input-text')
-        const newLineTxt = getLines()[getSelectedLineIdx()].txt
-        elInput.value = newLineTxt
-        renderMeme()
-    }
-}
-
 function onAddEmoji(emoji) {
     const elInput = document.querySelector('.input-text')
     var line = getLines()[getSelectedLineIdx()].txt
@@ -144,8 +136,8 @@ function onAddEmoji(emoji) {
     setLine(line)
     elInput.value = line
     renderMeme()
-
 }
+
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
@@ -161,7 +153,6 @@ function onUploadToFB(url) {
 }
 
 function onShare(ev) {
-
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
@@ -177,7 +168,6 @@ function onShare(ev) {
     uploadImg(canvasData, onSuccess)
 }
 
-
 function onSave() {
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
@@ -187,7 +177,6 @@ function onSave() {
 }
 
 function renderSavedImgs() {
-    console.log('Rendering img')
     const ElSavedContainer = document.querySelector('.saved-images-container')
     const savedImgs = getSavedImg()
     if (!savedImgs) {
@@ -199,7 +188,6 @@ function renderSavedImgs() {
         `<a onclick="onSelectSavedImg('${item.id}')" class="${item.id}">
            <img src="${item.imgUrl}">           </a>`
     ))
-    console.log(strHTMLs.join(''))
     ElSavedContainer.innerHTML = strHTMLs.join('')
 }
 
@@ -212,10 +200,9 @@ function onSelectSavedImg(imgId) {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    if (onCanvasClick(pos) === -1) return
+    if (getLineCliked(pos) === -1) return
     gIsMouseDown = true
     gPrevPos = pos
-
 }
 
 function onUp(ev) {
@@ -225,13 +212,10 @@ function onUp(ev) {
 function onDraw(ev) {
     if (!gIsMouseDown) return
     const pos = getEvPos(ev)
-
     const dx = pos.x - gPrevPos.x
     const dy = pos.y - gPrevPos.y
-    console.log('prev:', gPrevPos.x, gPrevPos.y, 'pos:', pos.x, pos.y, 'd:', dx, dy)
-
     moveLineFromDragAndDrop(dx, dy)
-    gPrevPos=pos
+    gPrevPos = pos
     renderMeme()
 }
 
@@ -252,7 +236,7 @@ function getEvPos(ev) {
     return pos
 }
 
-function onCanvasClick(pos) {
+function getLineCliked(pos) {
     const lineClickedIdx = findLineClicked(pos.x, pos.y)
     if (lineClickedIdx !== -1) {
         setSelectedLineIdx(lineClickedIdx)
