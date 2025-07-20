@@ -16,7 +16,7 @@
             <li><a href="#" onclick="onEditorClicked()">Memes</a></li>
             <li><a href="#" onclick="onSavedClicked()">Saved Memes</a></li>
         </ul>
-        <button class="btn-toggle-menu" onclick="toggleMenu()">
+        <button class="btn-toggle-menu" onclick="onToggleMenu()">
             <div class="hamburger-lines">
                 <span class="line line1"></span>
                 <span class="line line2"></span>
@@ -52,10 +52,8 @@
     </main>
     <main class="editor hide">
         <section class="canvas-containter">
-            <canvas class="canvas" width="300" height="300" ontouchstart="onDown(event)" 
-            onmousedown="onDown(event)"
-                ontouchend="onUp()" onmouseup="onUp()" ontouchmove="onDraw(event)"
-                 onmousemove="onDraw(event)"></canvas>
+            <canvas class="canvas" width="300" height="300" ontouchstart="onDown(event)" onmousedown="onDown(event)"
+                ontouchend="onUp()" onmouseup="onUp()" ontouchmove="onDraw(event)" onmousemove="onDraw(event)"></canvas>
         </section>
         <section class="panel-container">
 
@@ -108,8 +106,14 @@
         <div class="share-container "> </div>
     </main>
     <main class="saved-images-container ">
-
+        
     </main>
+    <footer class="footer">
+    <h4>
+        All Rights Reserved 2025
+    </h4>
+        <h4>Dan Ribak</h4>
+    </footer>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/meme-services.js"></script>
     <script src="js/meme-controller.js"></script>

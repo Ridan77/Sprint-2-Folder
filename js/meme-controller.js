@@ -19,18 +19,21 @@ function onGallryClicked() {
     document.querySelector('.editor').classList.add('hide')
     const elSaved = document.querySelector('.saved-images-container')
     document.querySelector('.saved-images-container').classList.add('hide')
+    onToggleMenu()
 }
 
 function onEditorClicked() {
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
     document.querySelector('.saved-images-container').classList.add('hide')
+    onToggleMenu()
 }
 
 function onSavedClicked() {
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.add('hide')
     document.querySelector('.saved-images-container').classList.remove('hide')
+    onToggleMenu()
     renderSavedImgs()
 }
 
@@ -138,7 +141,7 @@ function onAddEmoji(emoji) {
     renderMeme()
 }
 
-function toggleMenu() {
+function onToggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 

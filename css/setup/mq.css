@@ -17,9 +17,3 @@
   .saved-images-container {
     grid-template-columns:1fr 1fr  1fr 1fr;
   }
-/*   
-  canvas {
-    width: 500;
-    height: 500;
-  }
-} */
