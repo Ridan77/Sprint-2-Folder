@@ -86,17 +86,21 @@
   border-radius: 1rem;
 }
 
-.emoji{
+.emoji {
   font-size: 2em;
   text-align: center;
- background-color: transparent ;
-}
-input.color-picker {
-  display: none;
+  background-color: transparent;
 }
 
-.file-panel{
- display: grid;
+input.color-picker {
+  width: 40px;
+  margin: auto;
+  border: none;
+  border-radius: 1rem;
+}
+
+.file-panel {
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   margin: 10px 10px;
@@ -104,20 +108,17 @@ input.color-picker {
   align-items: center;
   padding: 10px;
   border-radius: 1rem;
-
 }
 
-.file-panel button{
- width: 80px;
+.file-panel button {
+  width: 80px;
   height: 40px;
   border-radius: 0.5rem;
   margin-top: 30px;
   border: none;
   margin: auto;
   font-weight: 700;
-
 }
-
 
 button:hover {
   filter: grayscale(100%);

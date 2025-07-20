@@ -129,6 +129,7 @@ function onChangeFontSize(diff) {
 }
 
 function onSetColor(val) {
+    console.log('setting color')
     setLineColor(val)
 }
 
