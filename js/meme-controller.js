@@ -47,10 +47,10 @@ function renderMeme() {
     const src = getPictureSelectedSrc()
     const elImg = new Image()
     elImg.src = src
-    elImg.onload = () => {
+    // elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderLines()
-    }
+    // }
 }
 
 function renderLines() {
@@ -153,6 +153,8 @@ function onUploadToFB(url) {
 }
 
 function onShare(ev) {
+    gRenderWithBorder = false
+    renderMeme()
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
@@ -166,6 +168,7 @@ function onShare(ev) {
         `
     }
     uploadImg(canvasData, onSuccess)
+    gRenderWithBorder=true
 }
 
 function onSave() {

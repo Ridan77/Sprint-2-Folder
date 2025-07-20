@@ -9,7 +9,7 @@ resetLines()
 
 function resetLines() {
     gMeme = {
-        selectedImgId: 1,
+       
         selectedImgSrc: '',
 
         selectedLineIdx: 0,
