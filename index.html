@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Meme Gen</title>
     <link rel="stylesheet" href="css/meme.css">
 </head>
 
@@ -52,7 +52,7 @@
     </main>
     <main class="editor hide">
         <section class="canvas-containter">
-            <canvas class="canvas" width="300" height="300" ontouchstart="onDown(event)" onmousedown="onDown(event)"
+            <canvas class="canvas" width="350" height="350" ontouchstart="onDown(event)" onmousedown="onDown(event)"
                 ontouchend="onUp()" onmouseup="onUp()" ontouchmove="onDraw(event)" onmousemove="onDraw(event)"></canvas>
         </section>
         <section class="panel-container">
@@ -60,58 +60,79 @@
             <input type="text" name="text-line" class="input-text" placeholder="Line goes in here..." id=""
                 oninput="onChangeTextLine(event.target.value)">
 
+            <div class="line-control-panel">
 
-            <button class="up-line line-controler" onclick="onMoveLine(-1)"><img
-                    src="img/Icons/up-arrow (1).png"></button>
-            <button class="down-line line-controler" onclick="onMoveLine(+1)"><img
-                    src="img/Icons/down-arrow.png"></button>
-            <button class="switch-line line-controler" onclick="onSwitchLine(1)"><img src="img/Icons/swap.png"></button>
-            <button class="add-line line-controler  " onclick="onAddLine()"><img src="img/Icons/plus.png"></button>
-            <button class="delete-line line-controler" onclick="onDeletehLine()"><img
-                    src="img/Icons/trash.png"></button>
+                <button class="switch-line line-controler" onclick="onSwitchLine(1)"><img
+                        src="img/Icons/swap.png"></button>
+                <button class="add-line line-controler  " onclick="onAddLine()"><img src="img/Icons/plus.png"></button>
+                <button class="delete-line line-controler" onclick="onDeletehLine()"><img
+                        src="img/Icons/trash.png"></button>
+            </div>
 
-            <button class="text-controler increase-font" onclick="onChangeFontSize(+1)"><img
-                    src="img/Icons/font.png"></button>
-            <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)"><img
-                    src="img/Icons/font (1).png"></button>
-            <button class="text-controler left-align" onclick="onChangeAlign('left')"><img
-                    src="img/Icons/align-to-left.png"></button>
-            <button class="text-controler center-align" onclick="onChangeAlign('center')"><img
-                    src="img/Icons/center-text-alignment.png"></button>
-            <button class="text-controler right=align" onclick="onChangeAlign('right')"><img
-                    src="img/Icons/align-to-right.png"></button>
-
-            <button class="emoji head-blow decrease-font" onclick="onAddEmoji('🤯')">🤯</button>
-            <button class="emoji sun-glass decrease-font" onclick="onAddEmoji('😎')">😎</button>
-            <button class="emoji vommit decrease-font" onclick="onAddEmoji('🤮')">🤮</button>
-            <button class="emoji poo decrease-font" onclick="onAddEmoji('💩')">💩</button>
-            <button class="emoji clown decrease-font" onclick="onAddEmoji('🤡')">🤡</button>
+            <div class="text-style-panel">
 
 
+                <button class="text-controler increase-font" onclick="onChangeFontSize(+1)"><img
+                        src="img/Icons/font.png"></button>
+                <button class="text-controler decrease-font" onclick="onChangeFontSize(-1)"><img
+                        src="img/Icons/font (1).png"></button>
+                <button class="text-controler left-align" onclick="onChangeAlign('left')"><img
+                        src="img/Icons/align-to-left.png"></button>
+                <button class="text-controler center-align" onclick="onChangeAlign('center')"><img
+                        src="img/Icons/center-text-alignment.png"></button>
+                <button class="text-controler right=align" onclick="onChangeAlign('right')"><img
+                        src="img/Icons/align-to-right.png"></button>
 
-            <label for="color-picker"><img class="color-picker" src="img/Icons/paint-board-and-brush.png">
-                <input type="color" name="color-picker" value="#000000" id="color-picker" class="color-picker"
-                    onchange="onSetColor(event.target.value)" />
-            </label>
+                <button class="color-picker" onchange="onSetColor(event.target.value)"><input type="color"
+                        name="color-picker" value="#000000" id="color-picker" class="color-picker" /><img
+                        src="img/Icons/paint-board-and-brush.png"></button>
+
+                <!-- <label for="color-picker"><img class="color-picker" src="img/Icons/paint-board-and-brush.png"> -->
+                <!-- <input type="color" name="color-picker" value="#000000" id="color-picker" class="color-picker" /> -->
+                <!-- <input type="color" name="color-picker" value="#000000" id="color-picker" class="color-picker"
+                        onchange="onSetColor(event.target.value)" /> -->
+                <!-- </label> -->
+
+                <button class="up-line line-controler" onclick="onMoveLine(-1)"><img
+                        src="img/Icons/up-arrow (1).png"></button>
+                <button class="down-line line-controler" onclick="onMoveLine(+1)"><img
+                        src="img/Icons/down-arrow.png"></button>
+
+            </div>
+
+            <div class="emoji-panel">
+
+                <button class="emoji head-blow decrease-font" onclick="onAddEmoji('🤯')">🤯</button>
+                <button class="emoji sun-glass decrease-font" onclick="onAddEmoji('😎')">😎</button>
+                <button class="emoji vommit decrease-font" onclick="onAddEmoji('🤮')">🤮</button>
+                <button class="emoji poo decrease-font" onclick="onAddEmoji('💩')">💩</button>
+                <button class="emoji clown decrease-font" onclick="onAddEmoji('🤡')">🤡</button>
+            </div>
 
 
-            <button class="share-btn" onclick="onShare(event)">Share</button>
-            <button class="download-btn">
-                <a href="#" class="btn " onclick="onDownloadImg(this)" download="image.jpg">Download</a>
-            </button>
-            <button class="save-btn" onclick="onSave()">Save Meme</button>
+
+            <div class="file-panel">
+
+
+
+                <button class="share-btn" onclick="onShare(event)">Share</button>
+                <button class="download-btn">
+                    <a href="#" class="btn " onclick="onDownloadImg(this)" download="image.jpg">Download</a>
+                </button>
+                <button class="save-btn" onclick="onSave()">Save Meme</button>
 
         </section>
 
-        <div class="share-container "> </div>
+        <div class="share-container"> </div>
+        </div>
     </main>
     <main class="saved-images-container ">
-        
+
     </main>
     <footer class="footer">
-    <h4>
-        All Rights Reserved 2025
-    </h4>
+        <h4>
+            All Rights Reserved 2025
+        </h4>
         <h4>Dan Ribak</h4>
     </footer>
     <script src="js/services/storage.service.js"></script>

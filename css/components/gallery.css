@@ -25,7 +25,7 @@
 }
 .gallery-container img:hover{
     cursor: pointer;
-    outline : 3px solid var(--clr-primary--2);
+    outline : 3px solid var(--clr-primary--3);
     box-shadow: 5px 5px 5px var(--clr-primary-base);
 
 }

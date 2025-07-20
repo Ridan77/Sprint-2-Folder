@@ -1,6 +1,7 @@
-@media (width > 600px) {
+@media (width > 750px) {
   .gallery {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+     margin: 30px 100px;
   }
 
   .nav-bar {
@@ -17,3 +18,32 @@
   .saved-images-container {
     grid-template-columns:1fr 1fr  1fr 1fr;
   }
+
+.search-line{
+    margin-left: 100px;
+}
+
+.editor{
+  display: grid;
+  grid-template-columns: 1fr  1fr;
+  gap:80px;
+  margin: 100px;
+  width: auto;
+  
+}
+
+
+.canvas-containter{
+    margin-bottom: 0px;
+    justify-self: end;
+  }
+  .panel-container {
+    margin: 0px ;
+    justify-self: start;
+}
+
+.share-container{
+  grid-column: 1/-1;
+}
+
+}

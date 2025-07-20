@@ -2,9 +2,16 @@
     color: var(--clr-primary--3);
 
     margin:auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 50px;
  
     font-size: 0.6em;
     text-align: center;
+}
+
+.btn-facebook{
+ width: 120px;
+  height: 40px;
+  border-radius: 0.5rem;
+    margin-bottom: 20px;
 }

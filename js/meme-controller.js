@@ -19,21 +19,21 @@ function onGallryClicked() {
     document.querySelector('.editor').classList.add('hide')
     const elSaved = document.querySelector('.saved-images-container')
     document.querySelector('.saved-images-container').classList.add('hide')
-    onToggleMenu()
+    if (document.querySelector('body').classList.contains('menu-open')) onToggleMenu()
 }
 
 function onEditorClicked() {
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.remove('hide')
     document.querySelector('.saved-images-container').classList.add('hide')
-    onToggleMenu()
+    if (document.querySelector('body').classList.contains('menu-open')) onToggleMenu()
 }
 
 function onSavedClicked() {
     document.querySelector('.gallery-container').classList.add('hide')
     document.querySelector('.editor').classList.add('hide')
     document.querySelector('.saved-images-container').classList.remove('hide')
-    onToggleMenu()
+    if (document.querySelector('body').classList.contains('menu-open')) onToggleMenu()
     renderSavedImgs()
 }
 
@@ -51,8 +51,8 @@ function renderMeme() {
     const elImg = new Image()
     elImg.src = src
     // elImg.onload = () => {
-        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        renderLines()
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    renderLines()
     // }
 }
 
@@ -162,7 +162,7 @@ function onShare(ev) {
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
         document.querySelector('.share-container').innerHTML = `
-            <a href="${uploadedImgUrl}">Image Url</a>
+            <a href="${uploadedImgUrl}"></a>
             <p>Image url: ${uploadedImgUrl}</p>
            
             <button class="btn-facebook" target="_blank" onclick="onUploadToFB('${encodedUploadedImgUrl}')">
@@ -171,15 +171,18 @@ function onShare(ev) {
         `
     }
     uploadImg(canvasData, onSuccess)
-    gRenderWithBorder=true
+    gRenderWithBorder = true
 }
 
 function onSave() {
+    gRenderWithBorder=false
+    renderMeme()
     const canvasData = gElCanvas.toDataURL('image/jpeg')
     function onSuccess(uploadedImgUrl) {
         saveImg(uploadedImgUrl)
     }
     uploadImg(canvasData, onSuccess)
+    gRenderWithBorder=true
 }
 
 function renderSavedImgs() {

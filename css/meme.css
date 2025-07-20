@@ -1,12 +1,15 @@
 * *::before *::after {
   box-sizing: border-box;
-}
+ }
+/* {
+    box-sizing: border-box;
+} */
+
 
 /* SETUP */
 
 @import url("setup/typography.css");
 @import url("setup/variablres.css");
-
 
 /* COMPONENTS */
 @import url("components/header.css");
